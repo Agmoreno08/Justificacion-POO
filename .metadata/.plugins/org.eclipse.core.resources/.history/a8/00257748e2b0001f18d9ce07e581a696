@@ -1,0 +1,31 @@
+package com.agma.justificationpoo.modelo;
+
+import org.openxava.annotations.*;
+
+import com.agma.justificationpoo.actions.*;
+
+
+@View(members =
+    "dashboard [" +
+    "    estudiante { goToStudent };" +
+    "    profesor { goToTeacher };" +
+    "]"
+)
+public class LoginDashboard {
+
+    /**
+     * Acción para redirigir a la vista de estudiantes.
+     */
+    @Action(value = "LoginDashboard.goToStudent")
+    public void goToStudent() {
+        new RedirectToStudentAction().execute();
+    }
+
+    /**
+     * Acción para redirigir a la vista de profesores.
+     */
+    @Action(value = "LoginDashboard.goToTeacher")
+    public void goToTeacher() {
+        new RedirectToTeacherAction().execute();
+    }
+}

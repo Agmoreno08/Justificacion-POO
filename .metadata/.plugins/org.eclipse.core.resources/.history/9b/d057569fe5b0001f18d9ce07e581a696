@@ -1,0 +1,32 @@
+package com.agma.justificationpoo.modelo;
+
+import org.openxava.annotations.*;
+import org.openxava.jpa.*;
+import org.openxava.util.*;
+
+public class LoginDashboard {
+
+  
+    @LargeDisplay(icon = "account")
+    @Stereotype("LINK")
+    public String getStudentLink() {
+        Long totalEstudiantes = (Long) XPersistence.getManager()
+            .createQuery("select count(s) from Student s")
+            .getSingleResult();
+        String texto = Labels.get("LoginDashboard.estudiantesLink"); 
+        return "<strong>" + texto + ": <a href='Student' style='text-decoration:none;'>" 
+            + totalEstudiantes + "</a></strong>";
+    }
+
+    
+    @LargeDisplay(icon = "folder")
+    @Stereotype("LINK")
+    public String getTeacherLink() {
+        Long totalProfesores = (Long) XPersistence.getManager()
+            .createQuery("select count(t) from Teacher t")
+            .getSingleResult();
+        String texto = Labels.get("LoginDashboard.profesoresLink"); 
+        return "<strong>" + texto + ": <a href='Teacher' style='text-decoration:none;'>" 
+            + totalProfesores + "</a></strong>";
+    }
+}

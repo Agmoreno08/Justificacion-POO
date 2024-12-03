@@ -1,0 +1,25 @@
+package com.agma.justificationpoo.modelo;
+
+import org.openxava.actions.*;
+import org.openxava.annotations.*;
+
+
+@View(members = 
+    "Bienvenido al sistema de justificación;" +
+    "Opciones [" +
+    "   redirigirEstudiantes;" +
+    "   redirigirProfesores;" +
+    "]"
+)
+public class LoginDashboard {
+
+    @Action("LoginDashboard.goToStudent")
+    public String redirigirEstudiantes() {
+        return "Ir a Estudiantes";
+    }
+
+    @Action("LoginDashboard.goToTeacher")
+    public String redirigirProfesores() {
+        return "Ir a Profesores";
+    }
+}

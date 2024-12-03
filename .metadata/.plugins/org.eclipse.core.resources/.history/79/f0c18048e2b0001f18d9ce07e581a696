@@ -1,0 +1,30 @@
+package com.agma.justificationpoo.modelo;
+
+import org.openxava.annotations.*;
+import org.openxava.jpa.XPersistence;
+
+
+public class LoginDashboard {
+
+    
+    @LargeDisplay(icon = "account")
+    @Stereotype("LINK")
+    public String getEstudiantesLink() {
+        Long totalEstudiantes = (Long) XPersistence.getManager()
+            .createQuery("select count(s) from Student s")
+            .getSingleResult();
+        return "<strong>Total de <a href='Student' style='text-decoration:none;'>Estudiantes</a>: "
+            + totalEstudiantes + "</strong>";
+    }
+
+    
+    @LargeDisplay(icon = "folder")
+    @Stereotype("LINK")
+    public String getProfesoresLink() {
+        Long totalProfesores = (Long) XPersistence.getManager()
+            .createQuery("select count(t) from Teacher t")
+            .getSingleResult();
+        return "<strong>Total de <a href='Teacher' style='text-decoration:none;'>Profesores</a>: "
+            + totalProfesores + "</strong>";
+    }
+}

@@ -1,0 +1,18 @@
+package com.agma.justificationpoo.modelo;
+
+public enum ValidationStatus {
+    PENDING("Pending Validation"),
+    VALIDATED("Validated"),
+    REJECTED("Rejected");
+
+    private final String displayName;
+
+    ValidationStatus(String displayName) {
+        this.displayName = displayName;
+    }
+
+    @Override
+    public String toString() {
+        return this.displayName;
+    }
+}

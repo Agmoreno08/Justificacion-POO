@@ -1,0 +1,4 @@
+<actions>
+    <action id="LoginDashboard.goToStudent" class="com.agma.justificationpoo.actions.GoToStudentAction" />
+    <action id="LoginDashboard.goToTeacher" class="com.agma.justificationpoo.actions.GoToTeacherAction" />
+</actions>

@@ -1,0 +1,44 @@
+package com.tuempresa.justificationproyect.modelo;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.openxava.annotations.Depends;
+import org.openxava.annotations.ListProperties;
+import org.openxava.annotations.Required;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
+public class Administrator {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(length = 50, nullable = false)
+    @Required
+    private String firstName;
+
+    @Column(length = 50, nullable = false)
+    @Required
+    private String lastName;
+
+    @Column(length = 50, nullable = false)
+    @Required
+    private String role;
+
+    @Column(length = 50)
+    private String accessPermissions;
+
+    // Relationship with JustificationDocument
+    @OneToMany(mappedBy = "administrator", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ListProperties("id, documentType, validationStatus")
+    private List<JustificationDocument> validatedDocuments;
+
+    @Depends("firstName, lastName")
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+}

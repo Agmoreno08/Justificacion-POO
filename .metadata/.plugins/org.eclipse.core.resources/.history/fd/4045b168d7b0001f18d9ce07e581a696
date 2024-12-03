@@ -1,0 +1,5 @@
+package com.agma.justificationpoo.modelo;
+
+public class JustificationDocument {
+
+}

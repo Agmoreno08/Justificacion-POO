@@ -1,0 +1,5 @@
+package com.tuempresa.justificationproyect.modelo;
+
+public class JustificationDocument {
+
+}

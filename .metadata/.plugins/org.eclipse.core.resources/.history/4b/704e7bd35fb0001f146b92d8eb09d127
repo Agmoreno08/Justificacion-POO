@@ -1,0 +1,33 @@
+package com.tuempresa.justificationproyect.modelo;
+
+import javax.persistence.*;
+
+import org.openxava.annotations.*;
+
+@Entity
+public class LoginDashboard {
+
+    @Id
+    @Hidden
+    private int id = 1; // Valor predeterminado para id
+
+    @Transient
+    @LabelFormat(LabelFormatType.SMALL)
+    private String welcomeMessage = "Bienvenido a la Página de Justificaciones";
+
+    @Transient
+    @LabelFormat(LabelFormatType.SMALL)
+    private String instructionMessage = "Por favor, elige si eres estudiante o profesor para continuar.";
+
+    @Transient
+    @Stereotype("LINK")
+    public String getStudentLink() {
+        return "<a href='xava/module.jsp?application=JustificationProyect&module=Student'><strong>Estudiante</strong></a>";
+    }
+
+    @Transient
+    @Stereotype("LINK")
+    public String getTeacherLink() {
+        return "<a href='xava/module.jsp?application=JustificationProyect&module=Teacher'><strong>Profesor</strong></a>";
+    }
+}

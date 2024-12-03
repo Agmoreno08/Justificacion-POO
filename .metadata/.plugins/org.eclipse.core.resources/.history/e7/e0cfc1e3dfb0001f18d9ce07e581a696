@@ -1,0 +1,60 @@
+package com.agma.justificationpoo.modelo;
+
+
+
+import javax.persistence.*;
+
+import org.openxava.annotations.*;
+
+import lombok.*;
+
+@Entity
+public class LoginDashboard {
+
+    @Id
+    @Hidden
+    private int id = 1;
+
+    @Transient
+    @LabelFormat(LabelFormatType.SMALL)
+    @Stereotype("LABEL")
+    private String welcomeMessage = "Bienvenido a la Página de Justificaciones";
+
+    @Transient
+    @LabelFormat(LabelFormatType.SMALL)
+    @Stereotype("LABEL")
+    private String instructionMessage = "Por favor, elige si eres estudiante o profesor para continuar.";
+
+    @Transient
+    @Stereotype("LINK")
+    @LabelFormat(LabelFormatType.SMALL)
+    private String studentLink = "<a href='xava/module.jsp?application=JustificationProyect&module=Student' " +
+                                  "style='text-decoration:none; color:#007BFF;'>Estudiante</a>";
+
+    @Transient
+    @Stereotype("LINK")
+    @LabelFormat(LabelFormatType.SMALL)
+    private String teacherLink = "<a href='xava/module.jsp?application=JustificationProyect&module=Teacher' " +
+                                  "style='text-decoration:none; color:#007BFF;'>Profesor</a>";
+
+    // Getters y Setters
+    public String getWelcomeMessage() {
+        return welcomeMessage;
+    }
+
+    public String getInstructionMessage() {
+        return instructionMessage;
+    }
+
+    public String getStudentLink() {
+        return studentLink;
+    }
+
+    public String getTeacherLink() {
+        return teacherLink;
+    }
+}
+
+	
+
+}

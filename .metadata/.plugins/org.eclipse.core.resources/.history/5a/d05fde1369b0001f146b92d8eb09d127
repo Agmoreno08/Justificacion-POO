@@ -1,0 +1,70 @@
+package com.tuempresa.justificationproyect.modelo;
+
+import javax.persistence.*;
+
+import org.openxava.annotations.*;
+import org.openxava.jpa.*;
+
+@Entity
+
+public class LoginDashboard {
+
+    @Id
+    @Hidden
+    private int id = 1; 
+
+    @Transient
+    @LabelFormat(LabelFormatType.SMALL)
+    private String welcomeMessage = "Bienvenido a la Página de Justificaciones";
+
+    @Transient
+    @LabelFormat(LabelFormatType.SMALL)
+    private String instructionMessage = "Por favor, elige si eres estudiante o profesor para continuar.";
+
+    @Transient
+    @Stereotype("LINK")
+    @LabelFormat(LabelFormatType.SMALL)
+    public String getStudentLink() {
+        return "<a href='Student?simple=true' " +
+                " text-decoration:none;'>Estudiante</a>";
+    }
+
+    @Transient
+    @Stereotype("LINK")
+    @LabelFormat(LabelFormatType.SMALL)
+    public String getTeacherLink() {
+        return "<a href='Teacher?simple=true' " +
+                " text-decoration:none;'>Profesor</a>";
+    }
+
+    @Transient
+    @Stereotype("LABEL")
+    public String getTotalTeachers() {
+        Long total = (Long) XPersistence.getManager()
+            .createQuery("select count(*) from Teacher")
+            .getSingleResult();
+        return "Total de Profesores: " + total;
+    }
+
+    @Transient
+    @Stereotype("LABEL")
+    public String getTotalStudents() {
+        Long total = (Long) XPersistence.getManager()
+            .createQuery("select count(*) from Student")
+            .getSingleResult();
+        return "Total de Estudiantes: " + total;
+    }
+
+    @Transient
+    @Stereotype("LABEL")
+    public String getAdminMessage() {
+        return "Si eres administrador, por favor utiliza tu panel de control.";
+    }
+
+    @Transient
+    @Stereotype("LINK")
+    public String getAdminLink() {
+        return "<a href='AdminDashboard?simple=true' " +
+                "style='font-size:18px; color:#007BFF; text-decoration:none;'>Ir al Panel de Administración</a>";
+    }
+}

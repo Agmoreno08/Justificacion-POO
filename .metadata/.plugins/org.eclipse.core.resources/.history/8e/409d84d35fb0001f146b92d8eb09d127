@@ -1,0 +1,47 @@
+package com.tuempresa.justificationproyect.modelo;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+import org.openxava.annotations.Hidden;
+import org.openxava.annotations.LabelFormat;
+import org.openxava.annotations.LabelFormatType;
+import org.openxava.annotations.Stereotype;
+import org.openxava.jpa.XPersistence;
+
+@Entity
+public class LoginDashboard {
+
+    @Id
+    @Hidden
+    private int id = 1; // Valor predeterminado para id
+
+    @Transient
+    @LabelFormat(LabelFormatType.SMALL)
+    private String welcomeMessage = "Bienvenido a la Página de Justificaciones";
+
+    @Transient
+    @LabelFormat(LabelFormatType.SMALL)
+    private String instructionMessage = "Por favor, elige si eres estudiante o profesor para continuar.";
+
+    @Transient
+    @Stereotype("LINK")
+    public String getStudentLink() {
+        return "Estudiante";
+    }
+
+    @Transient
+    @Stereotype("LINK")
+    public String getTeacherLink() {
+        return "Profesor";
+    }
+
+    @Transient
+    @Stereotype("LABEL")
+    public String getTotalTeachers() {
+        Long total = (Long) XPersistence.getManager()
+            .createQuery("select count(*) from Teacher")
+            .getSingleResult();
+        return "Total de Profesores: " + total;
+    }
+}
