@@ -1,5 +1,2 @@
 /*C3*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C4*/SET SCHEMA PUBLIC
-INSERT INTO STUDENT VALUES(1,'10:00/12:50','agmoreno@uamv.edu.ni','Angel Gabriel',NULL,'Moreno Araica')
-COMMIT
